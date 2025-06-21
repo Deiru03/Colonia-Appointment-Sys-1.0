@@ -85,14 +85,14 @@
                         <!-- Top image -->
                         <div class="bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden h-[190px] lg:h-[192px]">
                             <!-- Replace 'image-1.jpg' with your actual image filename -->
-                            <img src="{{ asset('images/home/hiring.png') }}" alt="Image 1" 
+                            <img src="{{ asset('images/home/hiring.png') }}" alt="Image 1 small top" 
                                  class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Bottom image -->
                         <div class="bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden h-[190px] lg:h-[192px]">
                             <!-- Replace 'image-2.jpg' with your actual image filename -->
-                            <img src="{{ asset('images/home/BoC.png') }}" alt="Image 2" 
+                            <img src="{{ asset('images/home/BoC.png') }}" alt="Image 2 small bottom" 
                                  class="w-full h-full object-cover">
                         </div>
                     </div>
