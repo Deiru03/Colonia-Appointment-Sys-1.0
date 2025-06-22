@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -98,6 +98,72 @@
                     </div>
                 </div>
             </main>
+        </div>
+    
+        <div class="w-full max-w-7xl mx-auto mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- First image container -->
+            <div class="bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden h-[400px]">
+                <img src="{{ asset('images/home/featureStory.png') }}" alt="First Image" 
+                 class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Second image container -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden h-[400px]">
+                <!-- Interactive Map -->
+                <div id="mapContainer" class="w-full h-full"></div>
+                
+                <!-- Leaflet CSS and JS -->
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                
+                <script>
+                    // Initialize map when DOM is loaded
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var map = L.map('mapContainer').setView([12.8371, 120.7854], 13);
+                                                
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }).addTo(map);
+                                                
+                        // Add marker for Sablayan Colonia location
+                        L.marker([12.8371, 120.7854]).addTo(map)
+                            .bindPopup('<strong>Bureau of Corrections</strong><br>Sablayan Colonia, Occidental Mindoro, Philippines')
+                            .openPopup();
+                    });
+                </script>
+            </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-7xl mx-auto mt-8 mb-10">
+            <!-- About/Services Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white dark:bg-[#1a1a1a] p-6 rounded-lg shadow-sm border border-gray-100 dark:border-[#2a2a2a]">
+                    <h2 class="text-xl font-semibold mb-4 dark:text-[#EDEDEC]">Visitation Services</h2>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">The Bureau of Corrections provides scheduled visitation services for families and relatives of persons deprived of liberty. Our appointment system ensures a streamlined process for all visitors.</p>
+                    <div class="flex justify-end">
+                        <a href="{{ route('login') }}" class="inline-block px-5 py-2 bg-[#f8f8f7] dark:bg-[#2a2a2a] hover:bg-gray-100 dark:hover:bg-[#333] border border-[#19140035] dark:border-[#3E3E3A] rounded-sm text-sm">
+                            Schedule a Visit
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-[#1a1a1a] p-6 rounded-lg shadow-sm border border-gray-100 dark:border-[#2a2a2a]">
+                    <h2 class="text-xl font-semibold mb-4 dark:text-[#EDEDEC]">Important Announcements</h2>
+                    <div class="space-y-3">
+                        <div class="pb-3 border-b border-gray-100 dark:border-[#2a2a2a]">
+                            <p class="text-gray-700 dark:text-gray-300">Visiting hours are from 8:00 AM to 3:00 PM, Tuesday to Sunday.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Posted: June 1, 2023</p>
+                        </div>
+                        <div class="pb-3 border-b border-gray-100 dark:border-[#2a2a2a]">
+                            <p class="text-gray-700 dark:text-gray-300">New guidelines for package deliveries are now in effect.</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Posted: May 15, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         @if (Route::has('login'))
